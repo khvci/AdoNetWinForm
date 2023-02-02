@@ -205,7 +205,7 @@
             this.lblTotalCounter.AutoSize = true;
             this.lblTotalCounter.Location = new System.Drawing.Point(121, 191);
             this.lblTotalCounter.Name = "lblTotalCounter";
-            this.lblTotalCounter.Size = new System.Drawing.Size(18, 20);
+            this.lblTotalCounter.Size = new System.Drawing.Size(14, 16);
             this.lblTotalCounter.TabIndex = 24;
             this.lblTotalCounter.Text = "0";
             // 
@@ -214,6 +214,7 @@
             this.txtResultViewer.Location = new System.Drawing.Point(15, 214);
             this.txtResultViewer.Multiline = true;
             this.txtResultViewer.Name = "txtResultViewer";
+            this.txtResultViewer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtResultViewer.Size = new System.Drawing.Size(455, 430);
             this.txtResultViewer.TabIndex = 25;
             // 
