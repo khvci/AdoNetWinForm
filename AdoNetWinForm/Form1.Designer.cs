@@ -244,7 +244,7 @@
             this.Controls.Add(this.lblName);
             this.Name = "UserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Clear All";
+            this.Text = "User Form";
             this.ResumeLayout(false);
             this.PerformLayout();
 
