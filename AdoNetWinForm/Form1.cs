@@ -114,9 +114,9 @@ namespace AdoNetWinForm
                 }
             }
             return _count;
-           
+
         }
-        
+
         private void ShowAll()
         {
             conn = new SqlConnection(connectionString);
@@ -129,7 +129,7 @@ namespace AdoNetWinForm
                 {
                     StringBuilder builder = new StringBuilder();
                     SqlDataReader reader = command.ExecuteReader();
-                    
+
                     while (reader.Read())
                     {
                         builder.Append("*********");
@@ -155,7 +155,7 @@ namespace AdoNetWinForm
                         builder.Append("Gender: ");
                         builder.Append((Gender)reader[6]);
                         builder.Append(Environment.NewLine);
-                        
+
                     }
 
                     txtResultViewer.Text = builder.ToString();
