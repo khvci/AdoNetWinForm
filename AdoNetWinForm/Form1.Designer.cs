@@ -38,7 +38,6 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
-            this.lbResultViewer = new System.Windows.Forms.ListBox();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.cbUserType = new System.Windows.Forms.ComboBox();
             this.rbMale = new System.Windows.Forms.RadioButton();
@@ -47,6 +46,7 @@
             this.btnClearAll = new System.Windows.Forms.Button();
             this.lblTotalLabel = new System.Windows.Forms.Label();
             this.lblTotalCounter = new System.Windows.Forms.Label();
+            this.txtResultViewer = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblName
@@ -131,15 +131,6 @@
             this.txtPhone.Size = new System.Drawing.Size(346, 22);
             this.txtPhone.TabIndex = 10;
             // 
-            // lbResultViewer
-            // 
-            this.lbResultViewer.FormattingEnabled = true;
-            this.lbResultViewer.ItemHeight = 16;
-            this.lbResultViewer.Location = new System.Drawing.Point(11, 213);
-            this.lbResultViewer.Name = "lbResultViewer";
-            this.lbResultViewer.Size = new System.Drawing.Size(459, 212);
-            this.lbResultViewer.TabIndex = 14;
-            // 
             // btnAddUser
             // 
             this.btnAddUser.Location = new System.Drawing.Point(329, 163);
@@ -182,21 +173,23 @@
             // 
             // btnShowAll
             // 
-            this.btnShowAll.Location = new System.Drawing.Point(11, 436);
+            this.btnShowAll.Location = new System.Drawing.Point(11, 650);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(213, 23);
             this.btnShowAll.TabIndex = 13;
             this.btnShowAll.Text = "Show All";
             this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
             // btnClearAll
             // 
-            this.btnClearAll.Location = new System.Drawing.Point(253, 436);
+            this.btnClearAll.Location = new System.Drawing.Point(253, 650);
             this.btnClearAll.Name = "btnClearAll";
             this.btnClearAll.Size = new System.Drawing.Size(217, 23);
             this.btnClearAll.TabIndex = 22;
             this.btnClearAll.Text = "Clear All";
             this.btnClearAll.UseVisualStyleBackColor = true;
+            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
             // 
             // lblTotalLabel
             // 
@@ -216,11 +209,20 @@
             this.lblTotalCounter.TabIndex = 24;
             this.lblTotalCounter.Text = "0";
             // 
+            // txtResultViewer
+            // 
+            this.txtResultViewer.Location = new System.Drawing.Point(15, 214);
+            this.txtResultViewer.Multiline = true;
+            this.txtResultViewer.Name = "txtResultViewer";
+            this.txtResultViewer.Size = new System.Drawing.Size(455, 430);
+            this.txtResultViewer.TabIndex = 25;
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 469);
+            this.ClientSize = new System.Drawing.Size(481, 685);
+            this.Controls.Add(this.txtResultViewer);
             this.Controls.Add(this.lblTotalCounter);
             this.Controls.Add(this.lblTotalLabel);
             this.Controls.Add(this.btnClearAll);
@@ -228,7 +230,6 @@
             this.Controls.Add(this.rbMale);
             this.Controls.Add(this.cbUserType);
             this.Controls.Add(this.btnAddUser);
-            this.Controls.Add(this.lbResultViewer);
             this.Controls.Add(this.btnShowAll);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtUserName);
@@ -260,7 +261,6 @@
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.ListBox lbResultViewer;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.ComboBox cbUserType;
         private System.Windows.Forms.RadioButton rbMale;
@@ -269,6 +269,7 @@
         private System.Windows.Forms.Button btnClearAll;
         private System.Windows.Forms.Label lblTotalLabel;
         private System.Windows.Forms.Label lblTotalCounter;
+        private System.Windows.Forms.TextBox txtResultViewer;
     }
 }
 

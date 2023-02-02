@@ -1,9 +1,9 @@
-﻿using System;
+﻿using AdoNetWinForm.Entities;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
-using AdoNetWinForm.Entities;
 
 
 namespace AdoNetWinForm
@@ -21,6 +21,7 @@ namespace AdoNetWinForm
 
         private void UserForm_Load(object sender, EventArgs e)
         {
+            lblTotalCounter.Text = CountEntries().ToString();
             cbUserType.Items.Add("Personal User");
             cbUserType.Items.Add("Business User");
         }
@@ -30,8 +31,18 @@ namespace AdoNetWinForm
             User user = CreateUser();
             conn = new SqlConnection(connectionString);
             AddUserToDatabase(user);
+            lblTotalCounter.Text = CountEntries().ToString();
+            txtResultViewer.Text = ViewUser(user);
+        }
 
-            lbResultViewer.Items.Add(ViewUser(user));
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            ShowAll();
+        }
+
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            txtResultViewer.Text = string.Empty;
         }
 
         private string ViewUser(User user)
@@ -84,6 +95,70 @@ namespace AdoNetWinForm
                     command.Parameters.AddWithValue("@gender", user.Gender);
 
                     command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private string CountEntries()
+        {
+            conn = new SqlConnection(connectionString);
+            string _count;
+            using (conn)
+            {
+                conn.Open();
+
+                string query = "SELECT COUNT(Id) FROM Users";
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    _count = command.ExecuteScalar().ToString();
+                }
+            }
+            return _count;
+           
+        }
+        
+        private void ShowAll()
+        {
+            conn = new SqlConnection(connectionString);
+            using (conn)
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM Users";
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    StringBuilder builder = new StringBuilder();
+                    SqlDataReader reader = command.ExecuteReader();
+                    
+                    while (reader.Read())
+                    {
+                        builder.Append("*********");
+                        builder.Append(Environment.NewLine);
+                        builder.Append("Id: ");
+                        builder.Append(reader[0]);
+                        builder.Append(Environment.NewLine);
+                        builder.Append("First Name: ");
+                        builder.Append(reader[1]);
+                        builder.Append(Environment.NewLine);
+                        builder.Append("Last Name: ");
+                        builder.Append(reader[2]);
+                        builder.Append(Environment.NewLine);
+                        builder.Append("User Name: ");
+                        builder.Append(reader[3]);
+                        builder.Append(Environment.NewLine);
+                        builder.Append("User Type: ");
+                        builder.Append((UserType)reader[4]);
+                        builder.Append(Environment.NewLine);
+                        builder.Append("Phone: ");
+                        builder.Append(reader[5]);
+                        builder.Append(Environment.NewLine);
+                        builder.Append("Gender: ");
+                        builder.Append((Gender)reader[6]);
+                        builder.Append(Environment.NewLine);
+                        
+                    }
+
+                    txtResultViewer.Text = builder.ToString();
                 }
             }
         }
