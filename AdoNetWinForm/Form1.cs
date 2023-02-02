@@ -16,5 +16,10 @@ namespace AdoNetWinForm
         {
             InitializeComponent();
         }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
